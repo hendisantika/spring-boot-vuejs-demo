@@ -5,6 +5,7 @@ import com.hendisantika.dto.BookCreationRequest;
 import com.hendisantika.dto.MemberCreationRequest;
 import com.hendisantika.entity.Author;
 import com.hendisantika.entity.Book;
+import com.hendisantika.entity.Member;
 import com.hendisantika.service.LibraryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -77,6 +78,12 @@ public class LibraryController {
     @GetMapping("/member")
     public ResponseEntity<List<Member>> readMembers() {
         return ResponseEntity.ok(libraryService.readMembers());
+    }
+
+    @PatchMapping("/member/{memberId}")
+    public ResponseEntity<Member> updateMember(@RequestBody MemberCreationRequest request,
+                                               @PathVariable Long memberId) {
+        return ResponseEntity.ok(libraryService.updateMember(memberId, request));
     }
 
 }
