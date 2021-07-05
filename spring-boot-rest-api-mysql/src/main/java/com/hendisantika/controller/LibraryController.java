@@ -2,6 +2,7 @@ package com.hendisantika.controller;
 
 import com.hendisantika.dto.AuthorCreationRequest;
 import com.hendisantika.dto.BookCreationRequest;
+import com.hendisantika.dto.BookLendRequest;
 import com.hendisantika.dto.MemberCreationRequest;
 import com.hendisantika.entity.Author;
 import com.hendisantika.entity.Book;
@@ -84,6 +85,11 @@ public class LibraryController {
     public ResponseEntity<Member> updateMember(@RequestBody MemberCreationRequest request,
                                                @PathVariable Long memberId) {
         return ResponseEntity.ok(libraryService.updateMember(memberId, request));
+    }
+
+    @PostMapping("/book/lend")
+    public ResponseEntity<List<String>> lendABook(@RequestBody BookLendRequest bookLendRequests) {
+        return ResponseEntity.ok(libraryService.lendABook(bookLendRequests));
     }
 
 }
