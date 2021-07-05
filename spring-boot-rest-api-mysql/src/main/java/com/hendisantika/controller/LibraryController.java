@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +33,11 @@ public class LibraryController {
             return ResponseEntity.ok(libraryService.readBooks());
         }
         return ResponseEntity.ok(libraryService.readBook(isbn));
+    }
+
+    @GetMapping("/book/{bookId}")
+    public ResponseEntity<Book> readBook(@PathVariable Long bookId) {
+        return ResponseEntity.ok(libraryService.readBook(bookId));
     }
 
 }
