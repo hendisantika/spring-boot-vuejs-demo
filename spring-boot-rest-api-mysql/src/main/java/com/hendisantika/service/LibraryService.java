@@ -140,4 +140,8 @@ public class LibraryService {
         return booksApprovedToBurrow;
     }
 
+    public List<Author> readAuthors() {
+        return authorRepository.findAll();
+    }
+
 }
