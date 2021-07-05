@@ -4,6 +4,7 @@ import com.hendisantika.dto.BookCreationRequest;
 import com.hendisantika.dto.MemberCreationRequest;
 import com.hendisantika.entity.Author;
 import com.hendisantika.entity.Book;
+import com.hendisantika.entity.Member;
 import com.hendisantika.entity.MemberStatus;
 import com.hendisantika.repository.AuthorRepository;
 import com.hendisantika.repository.BookRepository;
@@ -74,6 +75,17 @@ public class LibraryService {
         Member member = new Member();
         BeanUtils.copyProperties(request, member);
         member.setStatus(MemberStatus.ACTIVE);
+        return memberRepository.save(member);
+    }
+
+    public Member updateMember(Long id, MemberCreationRequest request) {
+        Optional<Member> optionalMember = memberRepository.findById(id);
+        if (!optionalMember.isPresent()) {
+            throw new EntityNotFoundException("Member not present in the database");
+        }
+        Member member = optionalMember.get();
+        member.setLastName(request.getLastName());
+        member.setFirstName(request.getFirstName());
         return memberRepository.save(member);
     }
 
