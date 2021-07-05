@@ -1,5 +1,6 @@
 package com.hendisantika.service;
 
+import com.hendisantika.dto.AuthorCreationRequest;
 import com.hendisantika.dto.BookCreationRequest;
 import com.hendisantika.dto.MemberCreationRequest;
 import com.hendisantika.entity.Author;
@@ -89,4 +90,10 @@ public class LibraryService {
         return memberRepository.save(member);
     }
 
+
+    public Author createAuthor(AuthorCreationRequest request) {
+        Author author = new Author();
+        BeanUtils.copyProperties(request, author);
+        return authorRepository.save(author);
+    }
 }
