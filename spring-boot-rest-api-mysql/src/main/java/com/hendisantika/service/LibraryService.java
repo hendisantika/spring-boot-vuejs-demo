@@ -1,8 +1,10 @@
 package com.hendisantika.service;
 
 import com.hendisantika.dto.BookCreationRequest;
+import com.hendisantika.dto.MemberCreationRequest;
 import com.hendisantika.entity.Author;
 import com.hendisantika.entity.Book;
+import com.hendisantika.entity.MemberStatus;
 import com.hendisantika.repository.AuthorRepository;
 import com.hendisantika.repository.BookRepository;
 import com.hendisantika.repository.LendRepository;
@@ -67,4 +69,12 @@ public class LibraryService {
     public void deleteBook(Long id) {
         bookRepository.deleteById(id);
     }
+
+    public Member createMember(MemberCreationRequest request) {
+        Member member = new Member();
+        BeanUtils.copyProperties(request, member);
+        member.setStatus(MemberStatus.ACTIVE);
+        return memberRepository.save(member);
+    }
+
 }
