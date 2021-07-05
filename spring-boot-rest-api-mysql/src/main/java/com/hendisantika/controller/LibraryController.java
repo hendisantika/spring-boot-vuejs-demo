@@ -2,6 +2,7 @@ package com.hendisantika.controller;
 
 import com.hendisantika.dto.AuthorCreationRequest;
 import com.hendisantika.dto.BookCreationRequest;
+import com.hendisantika.dto.MemberCreationRequest;
 import com.hendisantika.entity.Author;
 import com.hendisantika.entity.Book;
 import com.hendisantika.service.LibraryService;
@@ -66,6 +67,11 @@ public class LibraryController {
     public ResponseEntity<Void> deleteBook(@PathVariable Long bookId) {
         libraryService.deleteBook(bookId);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/member")
+    public ResponseEntity<Member> createMember(@RequestBody MemberCreationRequest request) {
+        return ResponseEntity.ok(libraryService.createMember(request));
     }
 
 }
