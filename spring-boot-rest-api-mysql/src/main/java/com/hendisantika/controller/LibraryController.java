@@ -1,6 +1,9 @@
 package com.hendisantika.controller;
 
+import com.hendisantika.dto.AuthorCreationRequest;
 import com.hendisantika.dto.BookCreationRequest;
+import com.hendisantika.entity.Author;
+import com.hendisantika.entity.Book;
 import com.hendisantika.service.LibraryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -45,6 +48,11 @@ public class LibraryController {
     public ResponseEntity<Book> updateBook(@PathVariable("bookId") Long bookId,
                                            @RequestBody BookCreationRequest request) {
         return ResponseEntity.ok(libraryService.updateBook(bookId, request));
+    }
+
+    @PostMapping("/author")
+    public ResponseEntity<Author> createAuthor(@RequestBody AuthorCreationRequest request) {
+        return ResponseEntity.ok(libraryService.createAuthor(request));
     }
 
 }
