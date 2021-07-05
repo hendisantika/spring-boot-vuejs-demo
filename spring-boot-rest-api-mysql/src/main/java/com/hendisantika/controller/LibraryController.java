@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : spring-boot-rest-api-mysql
@@ -53,6 +55,11 @@ public class LibraryController {
     @PostMapping("/author")
     public ResponseEntity<Author> createAuthor(@RequestBody AuthorCreationRequest request) {
         return ResponseEntity.ok(libraryService.createAuthor(request));
+    }
+
+    @GetMapping("/author")
+    public ResponseEntity<List<Author>> readAuthors() {
+        return ResponseEntity.ok(libraryService.readAuthors());
     }
 
 }
