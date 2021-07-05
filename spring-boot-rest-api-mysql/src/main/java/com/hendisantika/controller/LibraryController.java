@@ -74,4 +74,9 @@ public class LibraryController {
         return ResponseEntity.ok(libraryService.createMember(request));
     }
 
+    @GetMapping("/member")
+    public ResponseEntity<List<Member>> readMembers() {
+        return ResponseEntity.ok(libraryService.readMembers());
+    }
+
 }
