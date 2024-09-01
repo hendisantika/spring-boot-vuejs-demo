@@ -1,7 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: gradle
-    directory: "/"
+    directory: "/spring-boot-rest-api-mysql"
     schedule:
       interval: daily
       time: '05:00'
